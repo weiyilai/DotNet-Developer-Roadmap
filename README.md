@@ -67,7 +67,7 @@ Download [PDF version](NET%20Developer%20Roadmap%20Minimal.pdf).
   - [14. Cloud](#14-cloud)
   - [15. Continuous Integration \& Delivery (CI/CD)](#15-continuous-integration--delivery-cicd)
   - [16. AI & Machine Learning](#16-ai--machine-learning)
-  - [17. NET Libraries](#17-net-libraries)
+  - [17. .NET Libraries](#17-net-libraries)
   - [Additional considerations](#additional-considerations)
     - [Performance best practices](#performance-best-practices)
     - [Profiling and diagnostics](#profiling-and-diagnostics)
@@ -87,7 +87,7 @@ Before going into specifics, you need to have a solid understanding of the **.NE
 
 ## .NET runtimes
 
-In this section, we will look at the main .NET runtimes. We consider .NET runtime as anything that implements **[ECMA-335 Standard for .NET](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/dotnet-standards.md)**.
+In this section, we will look at the main .NET runtimes. We consider .NET runtime as anything that implements **[ECMA-335 Standard for .NET](https://github.com/dotnet/runtime/blob/main/docs/project/dotnet-standards.md)**.
 
 ### .NET Framework
 
@@ -97,7 +97,7 @@ You can use it for both desktop and web development, but it is limited to Window
 
 ### .NET Core
 
-[.NET Core](https://dotnet.microsoft.com/en-us/download) is one of the runtimes in the .NET Ecosystem. It was released in 2016. and it's [open-sourced](https://github.com/dotnet/core). It does not represent a new version of the .NET Framework and will not replace it. It is an entirely independent version, built to allow cross-platform capability for application development. .NET Core consists of an App Host (dotnet.exe) that runs CLR and Library. It has a Common language runtime (CoreCLR) and .NET Core Class Library. It supports different application workloads, such as ASP.NET Core (MVC and API), console applications, and UWP.
+[.NET Core](https://dotnet.microsoft.com/en-us/download) is one of the runtimes in the .NET Ecosystem. It was released in 2016. and it's [open-sourced](https://github.com/dotnet/core). It was built from scratch as a cross-platform, modular runtime rather than as a new version of .NET Framework. Since .NET 5, it is the only line under active development: .NET Framework 4.8.1 is the final version and receives only security and reliability fixes. .NET Core consists of an App Host (dotnet.exe) that runs CLR and Library. It has a Common language runtime (CoreCLR) and .NET Core Class Library. It supports different application workloads, such as ASP.NET Core (MVC and API), console applications, and UWP.
 
 .NET Core can run on different platforms: Windows Client, Server, IoT, Linux, Ubuntu, FreeBSD, Tizen, and Mac OSX, and can be installed side-by-side of different versions per machine or user.
 
@@ -113,6 +113,8 @@ You can use it for both desktop and web development, but it is limited to Window
 .NET 10 is a **Long Term Support (LTS)** release, supported for three years (until November 2028).
 
 .NET 9 was a **Standard Term Support (STS)** release, supported for two years after the initial release (until November 2026). STS releases are supported for 24 months; LTS releases for a minimum of three years. Releases alternate between LTS and STS.
+
+**What's next:** [.NET 11](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/overview) is in preview and ships in November 2026 as an STS release, together with [C# 15](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-15) and [EF Core 11](https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-11.0/whatsnew). Headline changes are runtime-native async, Zstandard compression in ASP.NET Core, vector search in EF Core, and union types in C#.
 
 ![C#/NET Timeline](CSharp-NET_Timeline.png)
 
@@ -132,7 +134,7 @@ To learn more about the .NET Ecosystem, check [this blog post](https://milan.mil
 
 C# is a programming language developed by Microsoft. It's a language for building anything from desktop applications and games (using Unity) to cloud-based solutions and web services. With **strong support for object-oriented programming** and a rich library, it's designed to be easy and efficient. 
 
-The latest version is **[C# 14](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14)**, released in November 2025 with .NET 10. Notable recent additions include [extension members](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14#extension-members), the [`field` keyword](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14#the-field-keyword), [null-conditional assignment](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14#null-conditional-assignment), first-class `Span<T>` conversions, and `partial` constructors/events.
+The latest version is **[C# 14](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14)**, released in November 2025 with .NET 10. Notable recent additions include [extension members](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14#extension-members), the [`field` keyword](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14#the-field-keyword), [null-conditional assignment](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14#null-conditional-assignment), first-class `Span<T>` conversions, and `partial` constructors/events. [C# 15](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-15) is in preview and ships with .NET 11 in November 2026, bringing union types, closed hierarchies, extension indexers, and labeled `break`/`continue`.
 
 Check the full C# timeline:
 
@@ -151,6 +153,12 @@ You need to understand different **C# language features**, such as:
 - Collections
 - LINQ (Language Integrated Query)
 - Async and await for asynchronous programming
+- Nullable reference types
+- Records and pattern matching
+- Primary constructors and collection expressions
+- `Span<T>`, `Memory<T>`, and `ref struct` types
+- Source generators
+- File-based apps (`dotnet run app.cs`)
 
 But also **.NET libraries and APIs** for:
 
@@ -178,6 +186,12 @@ But also **.NET libraries and APIs** for:
     - [Async/Await](https://devblogs.microsoft.com/dotnet/how-async-await-really-works/) by Stephen Toub
     - [Threading in C#](https://www.albahari.com/threading/) by Joseph Albahari
     - [Concurrency](https://www.codeguru.com/csharp/thread-synchronization-c-sharp/) and [Locking](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock)
+    - [Pattern matching](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/pattern-matching) and [Records](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record)
+    - [Nullable reference types](https://learn.microsoft.com/en-us/dotnet/csharp/nullable-references)
+    - [Span<T> and Memory<T>](https://learn.microsoft.com/en-us/dotnet/standard/memory-and-spans/)
+    - [Source generators](https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview)
+    - [File-based apps](https://learn.microsoft.com/en-us/dotnet/core/sdk/file-based-apps) (`dotnet run app.cs`, .NET 10)
+    - [Native AOT](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/) and trimming
 
 ### 2. General Development Skills
 
@@ -218,6 +232,7 @@ But also:
 - Learn [SOLID](https://www.pluralsight.com/courses/principles-oo-design) principles of OO Design in depth.
 - Learn [Clean Architecture](https://newsletter.techworld-with-milan.com/p/what-is-clean-architecture)
 - Learn [Modular Monolith Architecture](https://newsletter.techworld-with-milan.com/p/what-is-a-modular-monolith)
+- Learn [Vertical Slice Architecture](https://www.jimmybogard.com/vertical-slice-architecture/)
 - Software Architecture Styles
     - Learn [Fundamentals of Software Architectures](https://amzn.to/3rEtJWh)
     - Learn [Layered](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch01.html) architecture style
@@ -254,13 +269,16 @@ Note that **Minimal APIs** are now preferred for lightweight APIs, instead of co
     - [How DNS works](https://newsletter.techworld-with-milan.com/i/135973327/how-dns-works)
     - [HTTP(S) protocol](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview) 
 - [ASP.NET MVC](https://dotnet.microsoft.com/en-us/apps/aspnet/mvc)
-- [ASP.NET MVC 5 Fundamentals by Scott Alen](https://www.pluralsight.com/courses/aspdotnet-mvc5-fundamentals) course
-- [ASP.NET Core Fundamentals by Scott Alen](https://www.pluralsight.com/courses/aspnet-core-fundamentals) course
+- [ASP.NET Core Fundamentals by Scott Allen](https://www.pluralsight.com/courses/aspnet-core-fundamentals) course
+- [Routing](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing)
 - [Middlewares](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware)
+- [Health Checks](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks)
+- [Rate Limiting](https://learn.microsoft.com/en-us/aspnet/core/performance/rate-limit)
 - APIs
     - [Web API](https://dotnet.microsoft.com/en-us/apps/aspnet/apis)
     - [Minimal APIs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-10.0)
       - [FastEndpoints](https://fast-endpoints.com/)
+      - [Built-in validation](https://learn.microsoft.com/en-us/aspnet/core/validation/overview?view=aspnetcore-10.0) (.NET 10)
     - Protocols
         - REST:
           - [REST API Design Best Practices](https://newsletter.techworld-with-milan.com/p/rest-api-design-best-practices)
@@ -278,12 +296,13 @@ Note that **Minimal APIs** are now preferred for lightweight APIs, instead of co
           - [Subscriptions](https://chillicream.com/docs/hotchocolate/v15/defining-a-schema/subscriptions)
           - [Distributed Schemas](https://chillicream.com/docs/hotchocolate/v15/distributed-schema)
         - gRPC:
-          - [gRPC Fundamtenals](https://grpc.io/)
-          - [Contracts and .proto files](https://learn.microsoft.com/en-us/aspnet/core/grpc/basics?)
+          - [gRPC Fundamentals](https://grpc.io/)
+          - [Contracts and .proto files](https://learn.microsoft.com/en-us/aspnet/core/grpc/basics)
           - [Protobuf](https://learn.microsoft.com/en-us/aspnet/core/grpc/protobuf)
           - [Bidirectional communication](https://learn.microsoft.com/en-us/aspnet/core/grpc/client)
           - [Interceptors](https://learn.microsoft.com/en-us/aspnet/core/grpc/interceptors)
     - SDK Clients – Simplify calling external APIs or building resilient API integrations:
+      - [IHttpClientFactory](https://learn.microsoft.com/en-us/dotnet/core/extensions/httpclient-factory) – The built-in way to create and pool `HttpClient` instances. -> Recommended
       - [Refit](https://github.com/reactiveui/refit) – Turns your REST API into a live interface via attributes. -> Recommended
       - [RestSharp](https://github.com/restsharp/RestSharp) – Low-level HTTP client wrapper, good for custom scenarios.
       - [Polly](https://github.com/App-vNext/Polly) – Fault-handling (retry, circuit breaker, timeout) for HTTP requests.
@@ -291,15 +310,19 @@ Note that **Minimal APIs** are now preferred for lightweight APIs, instead of co
 - Dependency Injection
     - [Life Cycles](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection)
     - [Microsoft Extensions Dependency Injection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) -> Recommended
-    - [Autofac](https://autofac.org/) -> Outdated!
+    - [Autofac](https://autofac.org/) -> Still maintained, but rarely needed now that built-in DI covers most cases
     - [Scrutor](https://github.com/khellang/Scrutor)
 - [Application Settings & Configurations](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration)
+  - [Options pattern](https://learn.microsoft.com/en-us/dotnet/core/extensions/options)
+  - [User Secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets) for local development
 - [Filters & Attributes](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters)
 - Security
     - [Identity on ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity)
     - [Authentication](https://docs.microsoft.com/en-us/aspnet/core/security/authentication) or [this Reddit thread](https://www.reddit.com/r/dotnet/comments/we9qx8/a_comprehensive_overview_of_authentication_in/)
     - [Authorization](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/introduction)
-    - [IdentityServer](https://identityserver4.readthedocs.io/en/latest)
+    - [Passkeys in ASP.NET Core Identity](https://learn.microsoft.com/en-us/aspnet/core/release-notes/aspnetcore-10.0) (.NET 10)
+    - [Duende IdentityServer](https://duendesoftware.com/products/identityserver) (PAID for commercial use; IdentityServer4 is end of life)
+    - [OpenIddict](https://documentation.openiddict.com/) (free OpenID Connect server)
     - [Auth0](https://auth0.com)
     - [OIDC](https://openid.net/connect)
     - [Mutual TLS](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) 
@@ -313,6 +336,7 @@ If you want to build UIs in .NET, you will need these frameworks. **Razor** is a
 
 - [Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor)
 - [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
+  - [Render modes](https://learn.microsoft.com/en-us/aspnet/core/blazor/components/render-modes) (static SSR, Server, WebAssembly, Auto)
 - [.NET MAUI](https://github.com/dotnet/maui)
 - [WPF](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/overview/?view=netdesktop-10.0)
 - [WinUI](https://docs.microsoft.com/en-us/windows/apps/winui/winui3/)
@@ -346,18 +370,22 @@ Here, you need to know:
   - [Functions](https://www.w3schools.com/sql/sql_ref_sqlserver.asp)
   - [Triggers](https://www.geeksforgeeks.org/sql-trigger-student-database/)
 - Relational
-  - [SQL Server](https://www.microsoft.com/sql-server/sql-server-2019)
-  - [PostgreSQL](https://www.postgresql.org) - recommened for new projects
+  - [SQL Server](https://www.microsoft.com/en-us/sql-server)
+  - [PostgreSQL](https://www.postgresql.org) - recommended for new projects
+  - [SQLite](https://www.sqlite.org/) - embedded database, ideal for local development and tests
   - [MariaDB](https://mariadb.org)
   - [MySQL](https://www.mysql.com)
   - [Azure SQL](https://azure.microsoft.com/en-us/products/azure-sql/database)
 - NoSQL
   - [MongoDB](https://docs.microsoft.com/aspnet/core/tutorials/first-mongo-app)
   - [RavenDB](https://github.com/ravendb/ravendb)
-  - [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db) - recommened for new projects
+  - [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db) - recommended for new projects
   - [Marten](https://martendb.io/) -  (document DB and event store on PostgreSQL)
   - [Apache Cassandra](https://cassandra.apache.org/)
   - [DynamoDB](https://aws.amazon.com/dynamodb/)
+- Vector search (for AI workloads):
+  - [pgvector](https://github.com/pgvector/pgvector) for PostgreSQL
+  - [Vector search in EF Core 11](https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-11.0/whatsnew) with SQL Server 2025
 - Tools:
   - [SQLFlow](https://sqlflow.gudusoft.com/#/) - a great tool to visualize SQL queries.
 - Security:
@@ -399,16 +427,13 @@ For **Entity Framework**, you need to know the following:
       - [Projections](https://makolyte.com/ef-core-aggregate-select-queries/)
       - [Aggregations](https://www.csharptutorial.net/entity-framework-core-tutorial/ef-core-group-by/)
     - Advanced Querying:
-      - [Compiled Queries](https://learn.microsoft.com/en-us/ef/core/performance/efficient-querying)
+      - [Compiled Queries](https://learn.microsoft.com/en-us/ef/core/performance/advanced-performance-topics#compiled-queries)
       - [Split Queries](https://learn.microsoft.com/en-us/ef/core/querying/single-split-queries)
-      - [Grouping](https://www.csharptutorial.net/entity-framework-core-tutorial/ef-core-group-by/)
-      - [Aggregation](https://makolyte.com/ef-core-aggregate-select-queries/)
       - [Functions](https://learn.microsoft.com/en-us/ef/core/querying/database-functions)
       - [Global Query Filters](https://learn.microsoft.com/en-us/ef/core/querying/filters)
-      - [Change Tracker](https://learn.microsoft.com/en-us/ef/core/change-tracking/)
     - Advanced Writing:
       - [Batch Update](https://learn.microsoft.com/en-us/ef/core/performance/efficient-updating)
-      - [Transactions] (https://learn.microsoft.com/en-us/ef/core/saving/transactions)
+      - [Transactions](https://learn.microsoft.com/en-us/ef/core/saving/transactions)
       - Concurrency: [Optimistic Locking](https://www.learnentityframeworkcore.com/concurrency) and [Pessimistic Locking](https://learn.microsoft.com/en-us/ef/core/saving/concurrency)
       - [Transaction Isolation Levels](https://www.bytehide.com/blog/transactions-ef-core)
     - Migrations:
@@ -431,9 +456,8 @@ For **Entity Framework**, you need to know the following:
     - Advanced topics:
       - [Temporal Tables](https://learn.microsoft.com/en-us/ef/core/providers/sql-server/temporal-tables)
       - [Shadow properties](https://learn.microsoft.com/en-us/ef/core/modeling/shadow-properties)
-      - [Keyless entities](https://learn.microsoft.com/en-us/ef/core/modeling/keyless-entity-types)
       - [DBContext pooling](https://learn.microsoft.com/en-us/ef/core/performance/advanced-performance-topics?tabs=with-di%2Cexpression-api-with-constant#dbcontext-pooling)
-      - [JSON Mapping](https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-7.0/whatsnew#mapping-to-json-columns)
+      - [JSON Mapping](https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-10.0/whatsnew) (complex types mapped to JSON columns)
 - [Dapper](https://github.com/StackExchange/Dapper)
 - [LINQ](https://www.dotnetnakama.com/blog/understanding-the-dot-net-language-integrated-query-linq/)
      - [Index, CountBy, AggregateBy](https://timdeschryver.dev/blog/new-linq-methods-in-c-13-index-countby-aggregateby)
@@ -454,13 +478,14 @@ Here you need to know:
 
 - [Unit Testing](https://www.pluralsight.com/courses/advanced-unit-testing)
     - Frameworks
-      - [xUnit](https://xunit.net/) -> Recommended
+      - [xUnit](https://xunit.net/) (v3) -> Recommended
       - [NUnit](https://nunit.org/)
       - [MSTest](https://docs.microsoft.com/dotnet/core/testing/unit-testing-with-mstest)
       - [TUnit](https://thomhurst.github.io/TUnit/)
+    - [Microsoft.Testing.Platform](https://learn.microsoft.com/en-us/dotnet/core/testing/microsoft-testing-platform-intro) - the new test runner that replaces VSTest
     - Mocking
-      - [NSubstitute](https://github.com/nsubstitute/NSubstitute) 
-      - [Moq](https://github.com/devlooped/moq) -> Recommended
+      - [NSubstitute](https://github.com/nsubstitute/NSubstitute) -> Recommended
+      - [Moq](https://github.com/devlooped/moq)
     - Assertion
       - [Shouldly](https://github.com/shouldly/shouldly) -> Recommended
       - [xUnit Assert](https://xunit.net/)
@@ -476,7 +501,6 @@ Here you need to know:
 - Mutation Testing
      - [Stryker](https://stryker-mutator.io/)
 - Behavior Testing
-     - [SpecFlow](https://github.com/techtalk/SpecFlow/tree/DotNetCore) (Not maintained)
      - [Reqnroll](https://github.com/reqnroll/Reqnroll)
 - End-to-End Testing
      - [Playwright](https://playwright.dev/)
@@ -485,7 +509,7 @@ Here you need to know:
 - Performance Testing
      - [K6](https://github.com/grafana/k6)
      - [JMeter](https://github.com/apache/jmeter)
-     - [BenchmarkDotNet](https://benchmarkdotnet.org/)]
+     - [BenchmarkDotNet](https://benchmarkdotnet.org/)
 - Load Testing
      - [NBomber](https://nbomber.com/)
 - Test Data Generators
@@ -501,6 +525,8 @@ Logging captures runtime information, errors, and other crucial data that can he
 - [Serilog](https://github.com/serilog/serilog)
 - [NLog](https://github.com/NLog/NLog)
 - [Microsoft.Extensions.Logging](https://learn.microsoft.com/en-us/dotnet/core/extensions/logging)
+  - [LoggerMessage source generator](https://learn.microsoft.com/en-us/dotnet/core/extensions/logger-message-generator) for high-performance logging
+- [Seq](https://datalust.co/seq) - log server for structured logs
 
 ### 9. Communication
 
@@ -511,9 +537,10 @@ In .NET we have three types of communication: Real-time communication, Synchrono
 - Real time communication:
     - [SignalR Core](https://docs.microsoft.com/aspnet/core/signalr)
     - [WebSockets](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/websockets) 
+    - [Server-Sent Events](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/responses?view=aspnetcore-10.0) (built-in since .NET 10)
     - [Socket.IO](https://github.com/doghappy/socket.io-client-csharp)
 - Synchronous communication: 
-    - [HTTP Client](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=net-10.0)
+    - [HTTP Client](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=net-10.0) via [IHttpClientFactory](https://learn.microsoft.com/en-us/dotnet/core/extensions/httpclient-factory)
 - Asynchronous communication: 
     - Message brokers:
          - [Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview)
@@ -558,6 +585,7 @@ Caching is like your app's personal short-term memory, storing frequently access
   - [FusionCache](https://github.com/ZiggyCreatures/FusionCache)
 - [Hybrid Cache](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/hybrid?view=aspnetcore-10.0)
 - [Redis](https://redis.io/)
+  - [Valkey](https://valkey.io/) and [Garnet](https://microsoft.github.io/garnet/) - Redis-compatible alternatives
 - Application-Level
    - [Built-in](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/response)
    - [Output Caching](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/output?source=recommendations)
@@ -576,7 +604,8 @@ These tools provide **real-time insights into your application's performance**, 
 - [Grafana](https://github.com/grafana/grafana)
 - [Datadog](https://www.datadoghq.com)
 - [ELK Stack](https://www.elastic.co/what-is/elk-stack)
-- [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-dotnet) - an emerging standard for tracing and monitoring in .NET.
+- [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-dotnet) - the standard for traces, metrics, and logs in .NET.
+- [Aspire Dashboard](https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/dashboard/overview) - local OpenTelemetry viewer for logs, traces, and metrics.
 - [Jaeger](https://www.jaegertracing.io/)
 - [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
 - [Azure Log Analytics](https://docs.microsoft.com/azure/azure-monitor/logs/log-analytics-overview)
@@ -594,6 +623,9 @@ Container solutions encapsulate your .NET application, libraries, and runtime in
       - [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)
       - [Volumes](https://docs.docker.com/storage/volumes/)
     - [Docker Compose](https://docs.docker.com/compose/)
+    - [Podman](https://podman.io/)
+    - [.NET SDK container publish](https://learn.microsoft.com/en-us/dotnet/core/containers/sdk-publish) - build images with `dotnet publish`, no Dockerfile needed
+    - [Chiseled images](https://devblogs.microsoft.com/dotnet/announcing-dotnet-chiseled-containers/) - minimal, hardened base images
     - [Docker Hub](https://hub.docker.com/)
     - [Azure Container Registry](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-intro)
 - Orchestration
@@ -619,10 +651,12 @@ Here, you must know how to manage users and administration, networks, virtual se
   - [DynamoDB](https://aws.amazon.com/dynamodb/)
   - [SQS/SNS](https://aws.amazon.com/blogs/dotnet/event-driven-net-applications-with-aws-lambda-and-amazon-eventbridge/)
   - [AWS Kinesis](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/csharp_kinesis_code_examples.html)
-  - [AWS Event Hubs](https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)
+  - [Amazon EventBridge](https://aws.amazon.com/eventbridge/)
   - [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
   - [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
 - [Azure](https://azure.microsoft.com/)
+  - [Azure App Service](https://learn.microsoft.com/en-us/azure/app-service/overview)
+  - [Managed Identity](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview)
   - [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview)
   - [Azure Service Bus](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues)
   - [Azure Event Hubs](https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)
@@ -656,9 +690,13 @@ Here you need to know how to:
     - [Gitlab CI](https://docs.gitlab.com/ee/ci)
     - [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines)
     - [AWS CodePipeline](https://aws.amazon.com/codepipeline/)
-    - [Travis CI](https://travis-ci.org)
     - [Jenkins](https://www.jenkins.io)
     - [TeamCity](https://www.jetbrains.com/teamcity)
+- Build hygiene:
+  - [Central Package Management](https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management)
+  - [NuGet Audit](https://learn.microsoft.com/en-us/nuget/concepts/auditing-packages) for vulnerable dependencies
+  - [dotnet format](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-format) and [code analyzers](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview)
+  - [Dependabot](https://docs.github.com/en/code-security/dependabot) or [Renovate](https://docs.renovatebot.com/) for dependency updates
 - Infrastructure as code (IaC):
   - [Terraform](https://www.terraform.io/)
   - [Pulumi](https://www.pulumi.com/)
@@ -684,13 +722,17 @@ For a .NET developer, key areas to understand include:
 
 - Building blocks
   - [Microsoft.Extensions.AI (MEAI)](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai) – Unified `IChatClient`/`IEmbeddingGenerator` abstractions over any provider. -> Recommended foundation
-  - [Microsoft Agent Framework](https://learn.microsoft.com/en-us/agent-framework/overview/agent-framework-overview) – Unified successor to Semantic Kernel + AutoGen for building agents and workflows.
-  - [Semantic Kernel](https://github.com/microsoft/semantic-kernel) – Orchestration SDK (being unified into the Microsoft Agent Framework).
+  - [Microsoft Agent Framework](https://learn.microsoft.com/en-us/agent-framework/overview/agent-framework-overview) – Unified successor to Semantic Kernel + AutoGen for building agents and workflows. 1.0 shipped in April 2026. -> Recommended for agents
+  - [Semantic Kernel](https://github.com/microsoft/semantic-kernel) – Now in maintenance mode (bug and security fixes only); new development happens in the Agent Framework.
+  - [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions) – Unified abstractions over vector stores for RAG.
   - [Model Context Protocol (C# SDK)](https://github.com/modelcontextprotocol/csharp-sdk) – Build MCP servers/clients to expose tools and data to AI models.
 - Models & inference
   - [ML.NET](https://dotnet.microsoft.com/en-us/apps/machinelearning-ai/ml-dotnet) – Classic ML (classification, regression, recommendation) in .NET.
   - [ONNX Runtime](https://onnxruntime.ai/) – Run pretrained models locally for inference.
   - [OllamaSharp](https://github.com/awaescher/OllamaSharp) – Run and consume local LLMs via Ollama.
+  - [Foundry Local](https://learn.microsoft.com/en-us/azure/foundry-local/) – Run Azure AI Foundry models on-device.
+- Vector stores
+  - [pgvector](https://github.com/pgvector/pgvector), [Qdrant](https://qdrant.tech/), [Azure AI Search](https://learn.microsoft.com/en-us/azure/search/)
 - Provider SDKs
   - [OpenAI .NET SDK](https://github.com/openai/openai-dotnet) – Official `OpenAI` NuGet package.
   - [Azure AI Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/) – Azure's unified platform for models, agents, and AI services.
@@ -707,17 +749,19 @@ For a .NET developer, key areas to understand include:
     - [GitHub Copilot](https://github.com/features/copilot) (+[Customizations](https://github.com/github/awesome-copilot))
     - [Claude Code](https://www.anthropic.com/claude-code)
     - [OpenAI Codex CLI](https://github.com/openai/codex)
+    - [Gemini CLI](https://github.com/google-gemini/gemini-cli)
     - [Aider](https://aider.chat/)
   - IDE
     - [Visual Studio / VS Code Copilot](https://visualstudio.microsoft.com/github-copilot/)
     - [Cursor](https://www.cursor.com/)
     - [Windsurf](https://windsurf.com/)
 
-### 17. NET Libraries
+### 17. .NET Libraries
 
 Some useful .NET libraries. Note that not all libraries will be used by everyone, it mainly depends on a project you work on.
 
 - **[MediatR](https://github.com/jbogard/MediatR)** – Mediator pattern implementation in .NET. (Now under a **commercial license** for most production use; not recommended -> manual handlers are better)
+  - **[Mediator](https://github.com/martinothamar/Mediator)** – Source-generated, MIT-licensed alternative to MediatR.
 - **[Polly](https://github.com/App-vNext/Polly)** – Fault-handling library that allows expressing policies such as Retry and Circuit Breaker.
 - **[Benchmark.NET](https://github.com/dotnet/BenchmarkDotNet)** – .NET library for benchmarking.
 - **[YARP](https://microsoft.github.io/reverse-proxy/)** – Reverse proxy server.
@@ -730,6 +774,8 @@ Some useful .NET libraries. Note that not all libraries will be used by everyone
   - **[AutoMapper](https://github.com/AutoMapper/AutoMapper)** – Convention-based mapping using profiles. (Now under a **commercial license** for most production use; not recommended -> use manual mapping)
   - **[Mapster](https://github.com/MapsterMapper/Mapster)** – Lightweight, fast, and flexible.
   - **[Mapperly](https://github.com/riok/mapperly)** – Compile-time, source generator-based mapper for performance and type safety. (better alternative to AutoMapper)
+- **[Humanizer](https://github.com/Humanizr/Humanizer)** – Turns strings, enums, dates, and numbers into human-readable text.
+- **[CsvHelper](https://github.com/JoshClose/CsvHelper)** – Read and write CSV files.
 
 ## Additional considerations
 
@@ -746,6 +792,7 @@ These tools can help you identify and debug different performance bottlenecks yo
 - [PerfView](https://joshthecoder.com/2023/10/23/using-perfview-to-diagnose-high-cpu-in-an-aspnet-app.html)
 - [Visual Studio Profiler](https://learn.microsoft.com/en-us/visualstudio/profiling/profiling-feature-tour?view=vs-2022)
 - [dotTrace](https://www.jetbrains.com/profiler/) and [dotMemory](https://www.jetbrains.com/dotmemory/)
+- [dotnet-counters, dotnet-trace, and dotnet-dump](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/tools-overview) - cross-platform CLI diagnostics
 
 #### Performances 101
 
@@ -781,6 +828,8 @@ Along with tools, you should be aware of different performance best practices fo
 
 - **Use Span<> instead of collections** (spans can represent a contiguous section of memory; this means we can use them to operate over arrays)
 
+- **Native AOT and trimming** (publish ahead-of-time compiled, self-contained apps for faster startup and a smaller footprint)
+
 Check more about performances in the [Awesome .NET Performance](https://github.com/adamsitnik/awesome-dot-net-performance) repo.
 
 ### Security and Cryptography
@@ -800,6 +849,14 @@ Security plays an essential role in application development. The most critical a
   - .NET Core Data Protection APIs
   - Hashing and digital signatures
   - Secure random number generation
+
+- **Web hardening** concepts:
+  - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+  - [CORS](https://learn.microsoft.com/en-us/aspnet/core/security/cors)
+  - [CSRF protection](https://learn.microsoft.com/en-us/aspnet/core/security/anti-request-forgery)
+  - [HTTPS and HSTS](https://learn.microsoft.com/en-us/aspnet/core/security/enforcing-ssl)
+  - Secrets management ([User Secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets) locally, [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault) in production)
+  - Dependency auditing ([NuGet Audit](https://learn.microsoft.com/en-us/nuget/concepts/auditing-packages))
 
 ## Additional learning resources
 
@@ -840,12 +897,12 @@ Security plays an essential role in application development. The most critical a
 - [Nick Chapsas](https://www.youtube.com/channel/UCrkPsvLGln62OMZRO6K-llg) 
 - [Milan Jovanovic](https://www.youtube.com/@MilanJovanovicTech) 
 - [Zoran Horvat](https://www.youtube.com/@zoran-horvat) 
-- [CodeOpinion](https://www.youtube.com/watch?v=_rgH0Kb9Bis), by Derek Comartin
+- [CodeOpinion](https://www.youtube.com/@CodeOpinion), by Derek Comartin
 - freeCodeCamp
   - [C# Tutorial - Full Course for Beginners](https://www.youtube.com/watch?v=GhQdlIFylQ8) (3h)
   - [Advanced C# Programming Course](https://www.youtube.com/watch?v=YT8s-90oDC0) (15h)
 - [Raw Coding](https://www.youtube.com/@RawCoding)
-- [Gui Fereira](https://www.youtube.com/@gui.ferreira)
+- [Gui Ferreira](https://www.youtube.com/@gui.ferreira)
 
 ### Blogs
 
@@ -853,7 +910,7 @@ Security plays an essential role in application development. The most critical a
 - [The Morning Dew](https://www.alvinashcraft.com/), aggregator of different info about .NET world, by Alvin Ashcraft.
 - [You’ve Been Haacked](https://haacked.com/), by Phil Haack.
 - [Eric Lippert's blog](https://ericlippert.com/), who worked on C# compiler team.
-- [Steve Smith](https://ardalis.com/), who focus on code qualiy and DDD.
+- [Steve Smith](https://ardalis.com/), who focuses on code quality and DDD.
 - [Andrew Lock](https://andrewlock.net/), Senior Engineer at Datadog
 - [Scott Hanselman](https://www.hanselman.com/blog/), Partner Program Manager at Microsoft
 - [Rick Strahl's Web Log](https://weblog.west-wind.com/), focus on web and desktop apps in .NET.
@@ -882,15 +939,15 @@ Security plays an essential role in application development. The most critical a
 
 ## Tools
 
-- [Git](https://github.com/git-guides/install-git) and some [GUI clients](https://www.hostinger.com/tutorials/best-git-gui-clients/) - Distibuted source control system.
-- [Visual Studio](https://visualstudio.microsoft.com/) - Main code editor for .NET projects.
+- [Git](https://github.com/git-guides/install-git) and some [GUI clients](https://www.hostinger.com/tutorials/best-git-gui-clients/) - Distributed source control system.
+- [Visual Studio 2026](https://visualstudio.microsoft.com/) - Main IDE for .NET projects.
 - [Visual Studio Code](https://code.visualstudio.com/) - Lightweight code editor for different tech stacks, including .NET.
 - [Rider](https://www.jetbrains.com/rider/) - Cross-Platform .NET IDE from JetBrains.
-- [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) / [Azure Data Studio](https://azure.microsoft.com/en-us/products/data-studio/) - IDE for managing any SQL infrastructure, from SQL Server to Azure SQL Database.
+- [SQL Server Management Studio](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) / [MSSQL extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) - tools for managing SQL Server and Azure SQL (Azure Data Studio was retired in February 2026).
 - [LINQPad](https://www.linqpad.net/) - interactively query databases with LINQ.
 - [ReSharper](https://www.jetbrains.com/resharper/) - rapid refactoring.
-- [.NET Reflector](https://www.red-gate.com/products/reflector/) - .NET decompiler.
-- [Postman](https://www.postman.com/) - platform for testing APIs.
+- [ILSpy](https://github.com/icsharpcode/ILSpy) / [dotPeek](https://www.jetbrains.com/decompiler/) / [.NET Reflector](https://www.red-gate.com/products/reflector/) - .NET decompilers.
+- [Postman](https://www.postman.com/), [Bruno](https://www.usebruno.com/), or [.http files](https://learn.microsoft.com/en-us/aspnet/core/test/http-files) - tools for testing APIs.
 - [NDepend](https://www.ndepend.com/) - static code analyzer.
 - [NCrunch for Visual Studio](https://www.ncrunch.net/) - enables developers to run tests in the background as they write code.
 
