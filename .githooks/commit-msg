@@ -1,0 +1,29 @@
+#!/bin/sh
+# commit-msg hook: strip AI attribution trailers from the commit message.
+# Removes any line matching:
+#   ^Co-Authored-By: Claude
+#   ^Claude-Session:
+#   Generated with [Claude Code]
+# Then trims trailing blank lines left behind.
+# Portable: POSIX sh, grep -E, awk, and a temp file (no sed -i).
+
+msg="$1"
+[ -n "$msg" ] && [ -f "$msg" ] || exit 0
+
+tmp="$(mktemp "${TMPDIR:-/tmp}/commit-msg.XXXXXX")" || exit 1
+trap 'rm -f "$tmp"' EXIT
+
+# grep -v exits 1 when every line was removed; that is not an error here.
+grep -v -E '^Co-Authored-By: Claude|^Claude-Session:|Generated with \[Claude Code\]' "$msg" > "$tmp"
+
+# Drop trailing blank lines so the message does not end with an orphaned gap.
+awk '
+  { line[NR] = $0 }
+  END {
+    n = NR
+    while (n > 0 && line[n] ~ /^[[:space:]]*$/) n--
+    for (i = 1; i <= n; i++) print line[i]
+  }
+' "$tmp" > "$msg"
+
+exit 0
